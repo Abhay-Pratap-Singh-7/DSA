@@ -1,3 +1,6 @@
+
+// there are two methods use one at a time
+
 #include <iostream>
 #include <set>
 using namespace std;
@@ -25,7 +28,15 @@ void removeDuplicate_M1(vector<int> &arr, int size){
 }
 
 void removeDuplicate_M2(vector<int> &arr, int size){
-    
+    int first = 0;
+    int index = 1;
+    for ( int i = 0; i < size; i++ ){
+        if ( arr[first] != arr[i] ){
+            arr[index] = arr[i];
+            first = index;
+            index++;
+        }
+    }
 }
 
 int main(){
@@ -45,6 +56,9 @@ int main(){
 
     // calling function to remove duplicates
     removeDuplicate_M1(arr, size);
+
+    // calling method 2 to remove duplicates
+    removeDuplicate_M2(arr, size);
 
     // output
     for ( auto i : arr ){
