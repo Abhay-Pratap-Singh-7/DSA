@@ -49,11 +49,6 @@ int longestConsecutiveSubstring_M2(vector<int> &arr){
     return longest;
 }
 
-// Better
-int longestConsecutiveSubstring_M3(vector<int> &arr){
-    
-}
-
 int main(){
 
     cout << endl;
