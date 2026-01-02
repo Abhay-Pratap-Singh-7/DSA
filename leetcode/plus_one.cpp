@@ -1,22 +1,28 @@
 #include <iostream>
 using namespace std;
 
-void plusOne(vector<int>& num){
+vector<int> plusOne(vector<int>& digits){
 
-    int last_digit = num.back();
-    last_digit++;
-    num.pop_back();
-    if( last_digit > 9 ){
-        int temp1 = last_digit % 10;
-        int temp2 = last_digit / 10;
+    if ( digits[digits.size()-1] != 9 ){
+            digits[digits.size()-1] += 1;
+        }
+        else {
+            int pointer = digits.size()-1;
+            while ( digits[pointer] == 9 && pointer > 0 ){
+                digits[pointer] = 0;
+                pointer--;
+            }
+            if ( pointer == 0 && digits[pointer] == 9 ){
+                digits[pointer] = 0;
+                digits.insert(digits.begin(), 1);
+            }
+            else{
+                digits[pointer] += 1;
+            }
+            
+        }
 
-        num.push_back(temp2);
-        num.push_back(temp1);
-
-    }
-    else{
-        num.push_back(last_digit);
-    }
+        return digits;
 
 }
 
@@ -24,12 +30,9 @@ int main(){
 
     vector<int> v = {9};
     
-    plusOne(v);
+    v = plusOne(v);
 
-    for(auto i : v){
-        cout << " " << i;
+    for ( int i = 0; i < v.size(); i++ ){
+        cout << v[i] << " ";
     }
-    cout << endl;
-
-
 }
