@@ -3,31 +3,23 @@ using namespace std;
 
 int sumFourDivisors(vector<int> &nums)
 {
+    int divisors = 0;
     int sum = 0;
-    int count = 0;
-    int arr[4] = {0};
     for ( int i = 0; i < nums.size(); i++ ){
-        count = 0;
-        int flag = 0;
+        divisors = 0;
+        vector<int> arr;
         for ( int j = 1; j <= nums[i]; j++ ){
             if ( nums[i] % j == 0 ){
-                arr[count] = j;
-                count++;
-                cout << j << " ";
-                if ( count > 4 ){
-                    flag = 1;
-                    cout << "Flag = " << flag << " ";
-                    break;
-                }
-                cout << "Flag = " << flag << " ";
+                divisors++;
+                arr.insert(arr.end(), j);
+            }
+            if ( divisors > 4 ) break;
+        }
+        if ( divisors == 4 ){
+            for ( auto i : arr ){
+                sum += i;
             }
         }
-        if ( flag == 0 && count == 4 ){
-            for ( int i = 0; i < 4; i++ ){
-                sum += arr[i];
-            }
-        }
-        cout << sum << endl;
     }
     return sum;
 }
