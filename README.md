@@ -21,4 +21,3 @@ The repository is organized into categories based on problem types and sources:
 ## 🛠️ Tech Stack
 
 - **Language:** C++17 or higher
-- **Compiler:** GCC / Clang
