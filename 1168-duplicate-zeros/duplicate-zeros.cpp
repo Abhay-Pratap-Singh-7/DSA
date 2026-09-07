@@ -6,10 +6,10 @@ public:
         while ( n > i ) {
             if ( arr[i] == 0 ) {
                 arr.insert(arr.begin() + i, 0);
+                arr.pop_back();
                 i++;
             }
             i++;
         }
-        arr.resize(n);
     }
 };
